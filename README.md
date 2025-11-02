@@ -71,7 +71,7 @@ To get the project running locally:
 
 3.  **Install dependencies:**
     ```bash
-    pip install Flask Flask-SQLAlchemy Flask-Login Werkzeug Flask-Migrate # Add Flask-Migrate if you install it
+    pip install Flask Flask-SQLAlchemy Flask-Login Werkzeug Flask-Migrate
      ```
 
 4.  **Run the application:**

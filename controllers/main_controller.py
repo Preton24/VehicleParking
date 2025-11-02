@@ -200,7 +200,41 @@ def release_slot(reservation_id):
     db.session.commit()
     
     flash(f'Slot released successfully! Duration: {duration_hours:.2f} hours. Cost: ₹{total_cost:,.2f}', 'success')
-    return redirect(url_for('main.dashboard'))
+    return redirect(url_for('main.pay', reservation_id=reservation.id))
+
+@main_bp.route('/pay/<int:reservation_id>', methods=['GET', 'POST'])
+@login_required
+def pay(reservation_id):
+    reservation = Reservation.query.get_or_404(reservation_id)
+    
+    # Check authorization
+    if reservation.user_id != current_user.id and not current_user.is_admin:
+        flash('You are not authorized to view this payment page.', 'danger')
+        return redirect(url_for('main.dashboard'))
+    
+    # Only allow payment for completed reservations
+    if reservation.status != 'completed':
+        flash('This reservation is not ready for payment.', 'warning')
+        return redirect(url_for('main.dashboard'))
+    
+    if request.method == 'POST':
+        # Process payment (mock payment)
+        reservation.status = 'paid'
+        db.session.add(reservation)
+        db.session.commit()
+        
+        flash('Payment Successful!', 'success')
+        return redirect(url_for('main.dashboard'))
+    
+    # Calculate duration for display
+    duration = reservation.end_time - reservation.start_time
+    duration_hours = duration.total_seconds() / 3600.0
+    
+    return render_template(
+        'payment.html',
+        reservation=reservation,
+        duration_hours=duration_hours
+    )
 
 @main_bp.route('/cancel_reservation/<int:reservation_id>')
 @login_required

@@ -30,7 +30,7 @@ Once payment is completed, the reservation is marked as **Paid**, and users are 
 
 ---
 
-## 🛠 Technologies Used
+## Technologies Used
 - **Flask**, **Flask-SQLAlchemy**, **Flask-Login**, **Flask-Migrate**  
 - **SQLite** for data storage  
 - **Bootstrap + Jinja2** for responsive UI  
@@ -39,7 +39,7 @@ Once payment is completed, the reservation is marked as **Paid**, and users are 
 
 ---
 
-## 🧱 Database Schema  
+## Database Schema  
 
 | Table        | Key Fields                                                                 |
 |---------------|---------------------------------------------------------------------------|
@@ -72,30 +72,11 @@ To get the project running locally:
 3.  **Install dependencies:**
     ```bash
     pip install Flask Flask-SQLAlchemy Flask-Login Werkzeug Flask-Migrate # Add Flask-Migrate if you install it
-    ```
+     ```
 
-4.  **Set up the database:**
-    Your `app.py` is configured to create the database automatically when run for the first time.
-    If you've made schema changes (e.g., adding `price`, `address`, `pin_code`, `maximum_number_of_spots` to `ParkingLot` or `cost` to `Reservation`), you need to migrate your database.
-
-    **Option A: Using Flask-Migrate (Recommended)**
-    If you've integrated Flask-Migrate into your `app.py`:
+4.  **Run the application:**
     ```bash
-    flask db init          # Run once to initialize migrations directory
-    flask db migrate -m "Initial migration or schema updates"
-    flask db upgrade
-    ```
-    Repeat `flask db migrate -m "..."` and `flask db upgrade` every time you change your models.
-
-    **Option B: Recreate Database (CAUTION: Deletes all existing data)**
-    If you are in early development and don't mind losing data, you can recreate the database:
-    ```bash
-    python create_db.py
-    ```
-
-5.  **Run the application:**
-    ```bash
-    flask run
+    python app.py
     ```
 
 ## Admin Credentials

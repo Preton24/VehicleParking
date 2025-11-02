@@ -1,0 +1,569 @@
+/* Modern gradient background with new color palette */
+body {
+    background: linear-gradient(135deg, #222831 0%, #283b48 50%, #222831 100%);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    color: #d8d7ce;
+}
+
+/* Animated background pattern overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 166, 192, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(216, 215, 206, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(0, 166, 192, 0.1) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+}
+
+/* Enhanced navbar styling */
+.navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(34, 40, 49, 0.95) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(0, 166, 192, 0.3);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #00a6c0, #d8d7ce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+}
+
+/* Navbar button styles for signin/logout */
+.navbar .btn {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+    color: #d8d7ce;
+}
+
+.navbar .btn-outline-primary {
+    color: #00a6c0;
+    border: 2px solid #00a6c0;
+    background: transparent;
+}
+
+.navbar .btn-outline-primary:hover {
+    color: #d8d7ce;
+    background: linear-gradient(135deg, #00a6c0, #283b48);
+    border-color: #00a6c0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 166, 192, 0.4);
+}
+
+.navbar .btn-outline-secondary {
+    color: #d8d7ce;
+    border: 2px solid #283b48;
+    background: transparent;
+}
+
+.navbar .btn-outline-secondary:hover {
+    color: #d8d7ce;
+    background: #283b48;
+    border-color: #283b48;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 59, 72, 0.4);
+}
+
+.navbar .btn-primary {
+    background: linear-gradient(135deg, #00a6c0, #283b48);
+    border: none;
+    color: #d8d7ce;
+    box-shadow: 0 2px 8px rgba(0, 166, 192, 0.3);
+}
+
+.navbar .btn-primary:hover {
+    background: linear-gradient(135deg, #0093a8, #222831);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 166, 192, 0.5);
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+    color: #d8d7ce !important;
+    font-weight: 500;
+    margin: 0 0.25rem;
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00a6c0 !important;
+    background: rgba(0, 166, 192, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Glass morphism cards with new palette */
+.card {
+    background: rgba(40, 59, 72, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 166, 192, 0.2);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #d8d7ce;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 166, 192, 0.4);
+}
+
+.card-header {
+    background: linear-gradient(135deg, rgba(0, 166, 192, 0.2), rgba(34, 40, 49, 0.3));
+    border-bottom: 1px solid rgba(0, 166, 192, 0.2);
+    font-weight: 600;
+    color: #d8d7ce;
+}
+
+/* Modern button styles */
+.btn-primary {
+    background: linear-gradient(135deg, #00a6c0, #283b48);
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 166, 192, 0.3);
+    color: #d8d7ce;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 166, 192, 0.5);
+    background: linear-gradient(135deg, #0093a8, #222831);
+    color: #d8d7ce;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #00a6c0, #283b48);
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 166, 192, 0.3);
+    color: #d8d7ce;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 166, 192, 0.5);
+    background: linear-gradient(135deg, #0093a8, #222831);
+    color: #d8d7ce;
+}
+
+/* Enhanced alert styles */
+.alert {
+    border-radius: 0.75rem;
+    border: none;
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+}
+
+.alert-success {
+    background: rgba(0, 166, 192, 0.2);
+    color: #d8d7ce;
+    border-left: 4px solid #00a6c0;
+}
+
+.alert-danger {
+    background: rgba(216, 88, 88, 0.2);
+    color: #d8d7ce;
+    border-left: 4px solid #d85858;
+}
+
+.alert-info {
+    background: rgba(0, 166, 192, 0.15);
+    color: #d8d7ce;
+    border-left: 4px solid #00a6c0;
+}
+
+/* Parking slot specific styles */
+.card-body.d-flex.flex-column.justify-content-between {
+    padding: 1.5rem;
+    position: relative;
+    color: #d8d7ce;
+}
+
+.card.h-100 {
+    min-height: 140px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card.h-100::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(0, 166, 192, 0.2) 0%, transparent 71%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.card.h-100:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.card.h-100:hover::before {
+    opacity: 1;
+}
+
+/* Ensure card content stays above the spotlight */
+.card.h-100 .card-body {
+    position: relative;
+    z-index: 2;
+}
+
+/* Enhanced badge styles */
+.badge {
+    padding: 0.6em 1em;
+    font-size: 0.75em;
+    font-weight: 600;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-success {
+    background: linear-gradient(135deg, #00a6c0, #283b48);
+    box-shadow: 0 2px 8px rgba(0, 166, 192, 0.3);
+    color: #d8d7ce;
+}
+
+.badge-danger {
+    background: linear-gradient(135deg, #d85858, #c04848);
+    box-shadow: 0 2px 8px rgba(216, 88, 88, 0.3);
+    color: #d8d7ce;
+}
+
+.badge-warning {
+    background: linear-gradient(135deg, #d8b958, #c0a448);
+    box-shadow: 0 2px 8px rgba(216, 185, 88, 0.3);
+    color: #222831;
+    font-weight: 700;
+}
+
+/* Dark mode admin cards */
+.card.bg-dark {
+    background: rgba(34, 40, 49, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 166, 192, 0.2);
+    color: #d8d7ce;
+}
+
+.card.bg-dark .card-header {
+    background: linear-gradient(135deg, rgba(0, 166, 192, 0.2), rgba(34, 40, 49, 0.3));
+    border-bottom: 1px solid rgba(0, 166, 192, 0.2);
+    color: #d8d7ce;
+}
+
+.card.bg-dark .card-body {
+    background-color: transparent;
+    color: #d8d7ce;
+}
+
+/* Modern form controls */
+.form-control, .form-select {
+    border-radius: 0.75rem;
+    border: 2px solid rgba(40, 59, 72, 0.8);
+    background: rgba(216, 215, 206, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #222831;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #00a6c0;
+    box-shadow: 0 0 0 3px rgba(0, 166, 192, 0.2);
+    background: rgba(216, 215, 206, 1);
+}
+
+.form-control::placeholder {
+    color: rgba(34, 40, 49, 0.6);
+}
+
+/* Enhanced footer */
+.footer {
+    padding: 2rem 0;
+    text-align: center;
+    color: #d8d7ce;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(0, 166, 192, 0.2);
+    background: rgba(34, 40, 49, 0.3);
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+}
+
+/* Content container for better spacing */
+.container, .container-fluid {
+    position: relative;
+    z-index: 1;
+}
+
+/* Text visibility enhancements */
+h1, h2, h3, h4, h5, h6 {
+    color: #d8d7ce;
+    font-weight: 600;
+}
+
+p, span, div {
+    color: #d8d7ce;
+}
+
+.text-muted {
+    color: rgba(216, 215, 206, 0.7) !important;
+}
+
+.text-primary {
+    color: #00a6c0 !important;
+}
+
+.text-secondary {
+    color: #283b48 !important;
+}
+
+/* Link styles */
+a {
+    color: #00a6c0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #0093a8;
+    text-decoration: underline;
+}
+
+/* Table styles for better visibility */
+.table {
+    color: #d8d7ce;
+}
+
+.table-dark {
+    background-color: rgba(34, 40, 49, 0.9);
+    border-color: rgba(0, 166, 192, 0.2);
+}
+
+.table-dark th,
+.table-dark td {
+    border-color: rgba(0, 166, 192, 0.2);
+    color: #d8d7ce;
+}
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    .btn-primary, .btn-success {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Loading animation for cards */
+@keyframes cardLoad {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: cardLoad 0.6s ease-out forwards;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar with new palette */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(34, 40, 49, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00a6c0, #283b48);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #0093a8, #222831);
+}
+
+/* Parking lot location header styling */
+.parking-lot-header,
+.lot-location-title {
+    color: #00a6c0 !important;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* General selector for parking lot titles */
+h3.text-white,
+h4.text-white,
+.card-header h3,
+.card-header h4 {
+    color: #00a6c0 !important;
+}
+
+/* Parking slot card text overrides for white/light backgrounds */
+.card.bg-white,
+.card[style*="background-color: white"],
+.card[style*="background: white"],
+.card.bg-light {
+    color: #222831 !important;
+}
+
+.card.bg-white h1,
+.card.bg-white h2,
+.card.bg-white h3,
+.card.bg-white h4,
+.card.bg-white h5,
+.card.bg-white h6,
+.card.bg-light h1,
+.card.bg-light h2,
+.card.bg-light h3,
+.card.bg-light h4,
+.card.bg-light h5,
+.card.bg-light h6 {
+    color: #222831 !important;
+}
+
+.card.bg-white p,
+.card.bg-white span,
+.card.bg-white div,
+.card.bg-light p,
+.card.bg-light span,
+.card.bg-light div {
+    color: #222831 !important;
+}
+
+.card.bg-white .text-muted,
+.card.bg-light .text-muted {
+    color: rgba(34, 40, 49, 0.6) !important;
+}
+
+/* Specific styles for parking slot cards with light backgrounds */
+.parking-slot-card,
+.slot-card {
+    background: rgba(216, 215, 206, 0.95) !important;
+    color: #222831 !important;
+    border: 1px solid rgba(0, 166, 192, 0.3);
+}
+
+.parking-slot-card h1,
+.parking-slot-card h2,
+.parking-slot-card h3,
+.parking-slot-card h4,
+.parking-slot-card h5,
+.parking-slot-card h6,
+.slot-card h1,
+.slot-card h2,
+.slot-card h3,
+.slot-card h4,
+.slot-card h5,
+.slot-card h6 {
+    color: #222831 !important;
+    font-weight: 600;
+}
+
+.parking-slot-card p,
+.parking-slot-card span,
+.parking-slot-card div,
+.slot-card p,
+.slot-card span,
+.slot-card div {
+    color: #283b48 !important;
+}
+
+/* Override for any white or light colored cards */
+.card[style*="background"] {
+    color: #222831 !important;
+}
+
+.card[style*="background"] * {
+    color: #222831 !important;
+}
+
+/* Additional utility classes for better contrast */
+.bg-primary-gradient {
+    background: linear-gradient(135deg, #00a6c0, #283b48) !important;
+    color: #d8d7ce !important;
+}
+
+.bg-secondary-gradient {
+    background: linear-gradient(135deg, #283b48, #222831) !important;
+    color: #d8d7ce !important;
+}
+
+.border-primary {
+    border-color: #00a6c0 !important;
+}
+
+.border-secondary {
+    border-color: #283b48 !important;
+}
+
+/* Fix dropdown appearing behind content */
+.dropdown-menu {
+  z-index: 1050; /* higher than most content */
+  position: absolute; /* make sure it's positioned */
+}
+.navbar {
+  z-index: 1100; /* ensure navbar stays on top */
+  position: relative; /* needed for z-index to apply */
+}

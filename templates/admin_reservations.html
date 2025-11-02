@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Manage All Reservations</h1>
+
+{% if reservations %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Vehicle Number</th>
+                    <th>Parking Lot</th>
+                    <th>Slot Number</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Duration</th>
+                    <th>Cost</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for res in reservations %}
+                <tr>
+                    <td>{{ res.id }}</td>
+                    <td>{{ res.user.name if res.user else 'N/A' }} ({{ res.user.email if res.user else 'N/A' }})</td>
+                    <td>{{ res.vehicle_number }}</td>
+                    <td>{{ res.slot.lot.name if res.slot and res.slot.lot else 'N/A' }}</td>
+                    <td>{{ res.slot.slot_number if res.slot else 'N/A' }}</td>
+                    <td>{{ res.start_time.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>
+                        {% if res.status == 'active' %}
+                            Ongoing
+                        {% else %}
+                            {{ res.end_time.strftime('%Y-%m-%d %H:%M') }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if res.status == 'active' %}
+                            {% set duration = now - res.start_time %}
+                            {% set hours = duration.total_seconds() / 3600 %}
+                            {{ "%.2f"|format(hours) }} hours (ongoing)
+                        {% elif res.end_time and res.start_time %}
+                            {% set duration = res.end_time - res.start_time %}
+                            {% set hours = duration.total_seconds() / 3600 %}
+                            {{ "%.2f"|format(hours) }} hours
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if res.cost is not none %}
+                            ₹{{ "{:,.2f}".format(res.cost) }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if res.status == 'active' %}
+                            <span class="badge bg-success">Active</span>
+                        {% elif res.status == 'completed' %}
+                            <span class="badge bg-secondary">Completed</span>
+                        {% else %}
+                            <span class="badge bg-danger">Cancelled</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if res.status == 'active' %}
+                        <a href="{{ url_for('main.release_slot', reservation_id=res.id) }}" class="btn btn-sm btn-success" onclick="return confirm('Are you sure you want to release this slot?');">Release Slot</a>
+                        <a href="{{ url_for('main.cancel_reservation', reservation_id=res.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to cancel this reservation? This action is irreversible.');">Cancel</a>
+                        {% else %}
+                        -
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-info" role="alert">
+        No reservations found.
+    </div>
+{% endif %}
+{% endblock %}

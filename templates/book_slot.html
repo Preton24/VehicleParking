@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card mt-5 shadow">
+            <div class="card-header text-center bg-primary text-white">
+                <h2>Book Parking Slot: {{ slot.slot_number }}</h2>
+                <p class="mb-0">Parking Lot: {{ slot.lot.name }} ({{ slot.lot.location }})</p>
+                <p class="mb-0">
+                    {% if slot.lot.price is not none %}
+                        Price: ₹{{ "{:,.2f}".format(slot.lot.price) }}/hour
+                    {% else %}
+                        Price: N/A
+                    {% endif %}
+                </p>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('main.book_slot', slot_id=slot.id) }}">
+                    <div class="mb-3">
+                        <label for="vehicle_number" class="form-label">Vehicle Number</label>
+                        <input type="text" name="vehicle_number" id="vehicle_number" class="form-control" required>
+                        <small class="form-text text-muted">Enter your vehicle registration number.</small>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">Confirm Booking</button>
+                    </div>
+                </form>
+                <hr>
+                <div class="text-center">
+                    <a href="{{ url_for('main.view_parking') }}" class="btn btn-secondary">Back to Parking Lots</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

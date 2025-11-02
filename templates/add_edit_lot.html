@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card mt-5 shadow">
+            <div class="card-header text-center bg-dark text-white">
+                <h2>{% if lot %}Edit Parking Lot{% else %}Add New Parking Lot{% endif %}</h2>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{% if lot %}{{ url_for('main.edit_lot', lot_id=lot.id) }}{% else %}{{ url_for('main.add_lot') }}{% endif %}">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Parking Lot Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ lot.name if lot else '' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="location" value="{{ lot.location if lot else '' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price (per hour, e.g.,50)</label>
+                        <input type="number" step="0.01" class="form-control" id="price" name="price" value="{{ lot.price if lot else '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" value="{{ lot.address if lot else '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pin_code" class="form-label">PIN Code</label>
+                        <input type="text" class="form-control" id="pin_code" name="pin_code" value="{{ lot.pin_code if lot else '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="maximum_number_of_spots" class="form-label">Maximum Number of Spots</label>
+                        <input type="number" class="form-control" id="maximum_number_of_spots" name="maximum_number_of_spots" value="{{ lot.maximum_number_of_spots if lot.maximum_number_of_spots is not none else '' }}" min="0">
+                        <small class="form-text text-muted">Total physical capacity of the parking lot.</small>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">{% if lot %}Update Lot{% else %}Add Lot{% endif %}</button>
+                    </div>
+                </form>
+                <hr>
+                <div class="text-center">
+                    <a href="{{ url_for('main.admin_lots') }}" class="btn btn-secondary">Back to Manage Lots</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
